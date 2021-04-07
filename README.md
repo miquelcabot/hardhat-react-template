@@ -1,5 +1,5 @@
-# uniswap-test
-Test app that connects to Uniswap using Hard Hat + Waffle + Ethers
+# hardhat-waffle-ethers-ts-template
+Hardhat+Waffle+Ethers+Typescript template to compile and test a Solidity Smart Contract
 
 Install:
 ```
