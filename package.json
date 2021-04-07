@@ -1,0 +1,38 @@
+{
+  "name": "uniswap-test",
+  "version": "1.0.0",
+  "description": "Test app that connects to Uniswap using Hard Hat + Waffle + Ethers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miquelcabot/uniswap-test.git"
+  },
+  "keywords": [
+    "uniswap",
+    "hardhat",
+    "waffle",
+    "ethers"
+  ],
+  "author": "Miquel A. Cabot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miquelcabot/uniswap-test/issues"
+  },
+  "homepage": "https://github.com/miquelcabot/uniswap-test#readme",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@types/chai": "^4.2.16",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^14.14.37",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.3.0",
+    "ethers": "^5.1.0",
+    "hardhat": "^2.1.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}
