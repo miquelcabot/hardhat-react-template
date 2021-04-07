@@ -16,6 +16,11 @@ Test:
 npm run test
 ```
 
+Deploy to Rinkeby test network:
+```
+npm run deploy
+```
+
 Run prettier on all your contracts:
 ```
 npm run prettier
