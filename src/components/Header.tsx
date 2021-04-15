@@ -1,8 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 
-export default () => {
+class Header extends Component {
+  render() {
     return (
-        <p>Header</p>
+      <p>Header</p>
     );
-};
+  }
+}
+
+export default Header;

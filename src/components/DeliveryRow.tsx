@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default () => {
+class DeliveryRow extends Component {
+  render() {
     return (
-        <p>Delivery row</p>
+      <p>Delivery new</p>
     );
-};
+  }
+}
+
+export default DeliveryRow;
