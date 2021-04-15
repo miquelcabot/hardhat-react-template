@@ -52,3 +52,18 @@ Run prettier on smart contracts:
 ```
 yarn prettier
 ```
+
+Run the ReactJS app in the development mode (open [http://localhost:3000](http://localhost:3000) to view it in the browser):
+```
+yarn start
+```
+
+Launch the ReactJS test runner in the interactive watch mode:
+```
+yarn test:react
+```
+
+Build the ReactJS app for production to the `build` folder:
+```
+yarn build
+```

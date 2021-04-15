@@ -103,6 +103,23 @@ dist
 # TernJS port file
 .tern-port
 
+# React dependencies
+/.pnp
+.pnp.js
+
+# React testing
+/coverage
+
+# ReactJS production
+/build
+
+# ReactJS misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # Waffle and typechain temp folders
 artifacts/
 cache/
