@@ -1,20 +1,63 @@
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
- import 'hardhat-typechain'
- import '@nomiclabs/hardhat-ethers'
- import '@nomiclabs/hardhat-waffle'
+// hardhat.config.ts
+import { config as dotenvConfig } from 'dotenv';
+import { resolve } from 'path';
+dotenvConfig({ path: resolve(__dirname, './.env') });
 
- const MNEMONIC: string = 'tragic square news business dad cricket nurse athlete tide split about ring'
- 
-module.exports = {
-  solidity: '0.7.3',
-  networks: {
-    hardhat: {
-    },
-    rinkeby: {
-      url: 'https://rinkeby.infura.io/v3/b2daf36eb4d74aed8ffac330c09dd2ee',
-      accounts: {mnemonic: MNEMONIC}
-    }
-  }
+import { HardhatUserConfig } from "hardhat/types";
+
+import "@nomiclabs/hardhat-waffle";
+import "@nomiclabs/hardhat-solhint";
+import "hardhat-typechain";
+import "hardhat-gas-reporter";
+import "solidity-coverage";
+
+const chainIds = {
+    ganache: 1337,
+    goerli: 5,
+    hardhat: 31337,
+    kovan: 42,
+    mainnet: 1,
+    rinkeby: 4,
+    ropsten: 3,
 };
+
+const MNEMONIC: string = process.env.MNEMONIC || '';
+const INFURA_KEY: string = process.env.INFURA || '';
+
+const getInfuraURL = (network: keyof typeof chainIds) => {
+    return `https://${network}.infura.io/v3/${INFURA_KEY}`;
+}
+
+const config: HardhatUserConfig = {
+    defaultNetwork: 'hardhat',
+    networks: {
+        hardhat: {
+            accounts: {
+                mnemonic: MNEMONIC
+            },
+            chainId: chainIds.hardhat
+        },
+        ropsten: {
+            url: getInfuraURL('ropsten'),
+            accounts: {
+                mnemonic: MNEMONIC
+            },
+            chainId: chainIds.ropsten
+        },
+        rinkeby: {
+            url: getInfuraURL('rinkeby'),
+            accounts: {
+                mnemonic: MNEMONIC
+            },
+            chainId: chainIds.rinkeby
+        }
+    },
+    solidity: {
+        compilers: [{ version: "0.7.6", settings: { optimizer: { enabled: true, runs: 200 }} }]
+    },
+    gasReporter: {
+        currency: 'USD',
+        enabled: process.env.GAS_REPORT ? true:false
+    }
+};
+export default config;
