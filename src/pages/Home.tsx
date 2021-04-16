@@ -1,12 +1,49 @@
 import React, { Component } from 'react';
-// import { useWeb3React } from '@web3-react/core'
+import { useWeb3React } from '@web3-react/core'
+import { InjectedConnector } from '@web3-react/injected-connector'
 
-// const { active, account, connector, activate, error } = useWeb3React()
+export const injectedConnector = new InjectedConnector({
+  supportedChainIds: [
+    1, // Mainet
+    3, // Ropsten
+    4, // Rinkeby
+    5, // Goerli
+    42, // Kovan
+  ],
+})
 
-/*function Web3 () {
-  const web3React = useWeb3React()
-  return web3React
-}*/
+export const Wallet = () => {
+  const { chainId, account, activate, active } = useWeb3React()
+
+  const onClick = () => {
+    activate(injectedConnector)
+  }
+
+  return (
+    <div>
+      <div>ChainId: {chainId}</div>
+      <div>Account: {account}</div>
+      {active ? (
+        <div>✅ </div>
+      ) : (
+        <button type="button" onClick={onClick}>
+          Connect
+        </button>
+      )}
+    </div>
+  )
+}
+
+export const EDelivery = () => {
+  const { chainId, account } = useWeb3React()
+
+  return (
+    <div>
+      <div>ChainId: {chainId}</div>
+      <div>Account: {account}</div>
+    </div>
+  )
+}
 
 class Home extends Component {
   state = {
@@ -22,7 +59,10 @@ class Home extends Component {
 
   render() {
     return (
-      <p>Home</p>
+      <div>
+        <Wallet />
+        <EDelivery />
+      </div>
     );
   }
 }
