@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "target": "es2018",
-    "module": "esnext",
+    "module": "commonjs", // commonjs
     "strict": true,
     "esModuleInterop": true,
     "outDir": "dist",
     "typeRoots": [
-      "./typechain",
+      "./src/typechain",
       "./node_modules/@types"
     ],
     "types": [

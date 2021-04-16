@@ -58,6 +58,9 @@ const config: HardhatUserConfig = {
     gasReporter: {
         currency: 'USD',
         enabled: process.env.GAS_REPORT ? true:false
+    },
+    typechain: {
+        outDir: "src/typechain",
     }
 };
 export default config;
