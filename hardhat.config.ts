@@ -7,9 +7,13 @@ import { HardhatUserConfig } from "hardhat/types";
 
 import "@nomiclabs/hardhat-waffle";
 import "@nomiclabs/hardhat-solhint";
+import "hardhat-deploy-ethers";
+import "hardhat-deploy";
+import "@symfoni/hardhat-react";
 import "hardhat-typechain";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
+import "@typechain/ethers-v5";
 
 const chainIds = {
     ganache: 1337,

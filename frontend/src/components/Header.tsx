@@ -7,7 +7,7 @@ class Header extends Component {
   render() {
     return (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand as={Link} to='/'>eDelivery with Ethereum</Navbar.Brand>
+        <Navbar.Brand as={Link} to='/'>eDelivery</Navbar.Brand>
         <Nav className="mr-auto">
           <Nav.Link as={Link} to='/'>Deliveries</Nav.Link>
           <Nav.Link as={Link} to='/deliveries/new'>+</Nav.Link>
