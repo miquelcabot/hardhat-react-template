@@ -6,15 +6,16 @@ Hardhat+Waffle+Ethers+Typescript template to compile and test a Solidity Smart C
 * yarn: `npm install --global yarn`
 
 ## Installation
-Install:
-```
-yarn install
-```
-
 Update env variables:
 ```
 vi .env.example
 mv .env.example .env
+```
+
+Install:
+```
+yarn install
+cd frontend && yarn install
 ```
 
 ## Commands

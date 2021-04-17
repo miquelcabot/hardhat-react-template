@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2018",
-    "module": "commonjs", // commonjs
+    "target": "es5",
+    "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
     "outDir": "dist",
     "typeRoots": [
-      "./src/typechain",
+      "./frontend/typechain",
       "./node_modules/@types"
     ],
     "types": [
@@ -14,24 +14,8 @@
       "@nomiclabs/hardhat-waffle"
     ],
     "resolveJsonModule": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
   },
   "include": [
-    "./src/**/*.ts",
-    "./src/**/*.tsx", 
     "./scripts",
     "./test"
   ],

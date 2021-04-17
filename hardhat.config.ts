@@ -60,7 +60,7 @@ const config: HardhatUserConfig = {
         enabled: process.env.GAS_REPORT ? true:false
     },
     typechain: {
-        outDir: "src/typechain",
+        outDir: "frontend/typechain",
     }
 };
 export default config;

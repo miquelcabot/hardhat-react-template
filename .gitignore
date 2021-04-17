@@ -104,14 +104,14 @@ dist
 .tern-port
 
 # React dependencies
-/.pnp
+.pnp/
 .pnp.js
 
 # React testing
-/coverage
+coverage/
 
 # ReactJS production
-/build
+build/
 
 # ReactJS misc
 .DS_Store
@@ -124,3 +124,8 @@ dist
 artifacts/
 cache/
 typechain/
+
+# We need to avoid the error:
+# "The react-scripts package provided by Create React App requires a dependency: "eslint": "^7.11.0". "
+# setting the SKIP_PREFLIGHT_CHECK=true environment variable
+!/frontend/.env

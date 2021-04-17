@@ -1,8 +1,8 @@
 import { ethers, waffle } from 'hardhat'
 import chai from 'chai'
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
-import { EDeliveryFactory } from '../src/typechain/EDeliveryFactory'
-import { EDelivery } from '../src/typechain/EDelivery'
+import { EDeliveryFactory } from '../frontend/typechain/EDeliveryFactory'
+import { EDelivery } from '../frontend/typechain/EDelivery'
 
 chai.use(waffle.solidity)
 const { expect } = chai
