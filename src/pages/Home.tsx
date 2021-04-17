@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { useWeb3React } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
+import { EDeliveryFactory } from '../typechain/EDeliveryFactory'
+
+// import { ethers, waffle } from 'hardhat'
 
 export const injectedConnector = new InjectedConnector({
   supportedChainIds: [
@@ -37,10 +40,17 @@ export const Wallet = () => {
 export const EDelivery = () => {
   const { chainId, account } = useWeb3React()
 
+  const onClick = () => {
+    console.log(EDeliveryFactory)
+  }
+
   return (
     <div>
       <div>ChainId: {chainId}</div>
       <div>Account: {account}</div>
+      <button type="button" onClick={onClick}>
+        Show
+      </button>
     </div>
   )
 }
