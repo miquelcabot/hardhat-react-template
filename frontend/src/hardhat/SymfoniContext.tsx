@@ -180,7 +180,9 @@ export const Symfoni: React.FC<SymfoniProps> = ({
     }, [initializeCounter])
 
     const getEDeliveryFactory = (_provider: providers.Provider, _signer?: Signer) => {
-        let instance = _signer ? EDeliveryFactory__factory.connect(ethers.constants.AddressZero, _signer) : EDeliveryFactory__factory.connect(ethers.constants.AddressZero, _provider)
+
+        const contractAddress = "0x458058F93642e281c23B5C468378948cDfda1727"
+        const instance = _signer ? EDeliveryFactory__factory.connect(contractAddress, _signer) : EDeliveryFactory__factory.connect(contractAddress, _provider)
         const contract: SymfoniEDeliveryFactory = {
             instance: instance,
             factory: _signer ? new EDeliveryFactory__factory(_signer) : undefined,
