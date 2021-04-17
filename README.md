@@ -24,6 +24,16 @@ Compile:
 yarn compile
 ```
 
+Run Hardhat Network:
+```
+yarn node
+```
+
+Open a hardhat console:
+```
+yarn console
+```
+
 Test:
 ```
 yarn test
