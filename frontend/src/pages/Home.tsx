@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useContext, useEffect } from 'react';
 import { useWeb3React } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
-// import { EDeliveryFactory } from '../../typechain/EDeliveryFactory'
-
-// import { ethers, waffle } from 'hardhat'
+import { Symfoni, EDeliveryFactoryContext } from "../hardhat/SymfoniContext";
 
 export const injectedConnector = new InjectedConnector({
   supportedChainIds: [
@@ -30,26 +28,41 @@ export const Wallet = () => {
         <div>✅ </div>
       ) : (
         <button type="button" onClick={onClick}>
-          Connect
+          Connect to MetaMask
         </button>
       )}
     </div>
   )
 }
 
-export const EDelivery = () => {
-  const { chainId, account } = useWeb3React()
+interface Props { }
 
-  const onClick = () => {
-    // console.log(EDeliveryFactory)
+const EDeliveryFactory: React.FC<Props> = () => {
+  const eDeliveryFactory = useContext(EDeliveryFactoryContext);
+
+  useEffect(() => {
+    const doAsync = async () => {
+        if (!eDeliveryFactory.instance) return
+        console.log("EDeliveryFactory is deployed at ", eDeliveryFactory.instance.address)
+        //console.log(await eDeliveryFactory.instance.greet())
+    };
+    doAsync();
+  }, [eDeliveryFactory])
+
+  const onClick = async () => {
+    if (!eDeliveryFactory.instance) throw Error("EDeliveryFactory instance not ready")
+    if (eDeliveryFactory.instance) {
+        const tx = await eDeliveryFactory.instance.createDelivery([eDeliveryFactory.instance.address], "hola")
+        console.log("createDelivery tx", tx)
+        await tx.wait()
+        console.log("New delivery created, result: ", await eDeliveryFactory.instance.deliveries)
+    }
   }
 
   return (
     <div>
-      <div>ChainId: {chainId}</div>
-      <div>Account: {account}</div>
       <button type="button" onClick={onClick}>
-        Show
+        Connect to eDeliveryFactory with Sinfony
       </button>
     </div>
   )
@@ -71,7 +84,9 @@ class Home extends Component {
     return (
       <div>
         <Wallet />
-        <EDelivery />
+        <Symfoni autoInit={true} >
+          <EDeliveryFactory />
+        </Symfoni>
       </div>
     );
   }
