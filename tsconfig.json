@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "outDir": "dist",
     "typeRoots": [
-      "./frontend/typechain",
+      "./frontend/src/typechain",
       "./node_modules/@types"
     ],
     "types": [

@@ -4,10 +4,10 @@
 import { providers, Signer, ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import Web3Modal, { IProviderOptions } from "web3modal";
-import { EDeliveryFactory } from "./../../typechain/EDeliveryFactory";
-import { EDeliveryFactory__factory } from "./../../typechain/factories/EDeliveryFactory__factory";
-import { EDelivery } from "./../../typechain/EDelivery";
-import { EDelivery__factory } from "./../../typechain/factories/EDelivery__factory";
+import { EDelivery } from "./../typechain/EDelivery";
+import { EDelivery__factory } from "./../typechain/factories/EDelivery__factory";
+import { EDeliveryFactory } from "./../typechain/EDeliveryFactory";
+import { EDeliveryFactory__factory } from "./../typechain/factories/EDeliveryFactory__factory";
 
 const emptyContract = {
     instance: undefined,
@@ -27,8 +27,8 @@ const defaultSymfoniContext: SymfoniContextInterface = {
     providers: []
 };
 export const SymfoniContext = React.createContext<SymfoniContextInterface>(defaultSymfoniContext);
-export const EDeliveryFactoryContext = React.createContext<SymfoniEDeliveryFactory>(emptyContract);
 export const EDeliveryContext = React.createContext<SymfoniEDelivery>(emptyContract);
+export const EDeliveryFactoryContext = React.createContext<SymfoniEDeliveryFactory>(emptyContract);
 
 export interface SymfoniContextInterface {
     init: (provider?: string) => void;
@@ -44,14 +44,14 @@ export interface SymfoniProps {
     loadingComponent?: React.ReactNode;
 }
 
-export interface SymfoniEDeliveryFactory {
-    instance?: EDeliveryFactory;
-    factory?: EDeliveryFactory__factory;
-}
-
 export interface SymfoniEDelivery {
     instance?: EDelivery;
     factory?: EDelivery__factory;
+}
+
+export interface SymfoniEDeliveryFactory {
+    instance?: EDeliveryFactory;
+    factory?: EDeliveryFactory__factory;
 }
 
 export const Symfoni: React.FC<SymfoniProps> = ({
@@ -68,8 +68,8 @@ export const Symfoni: React.FC<SymfoniProps> = ({
     const [currentAddress, setCurrentAddress] = useState<string>(defaultCurrentAddress);
     const [fallbackProvider] = useState<string | undefined>(undefined);
     const [providerPriority, setProviderPriority] = useState<string[]>(["web3modal", "hardhat"]);
-    const [EDeliveryFactory, setEDeliveryFactory] = useState<SymfoniEDeliveryFactory>(emptyContract);
     const [EDelivery, setEDelivery] = useState<SymfoniEDelivery>(emptyContract);
+    const [EDeliveryFactory, setEDeliveryFactory] = useState<SymfoniEDeliveryFactory>(emptyContract);
     useEffect(() => {
         if (messages.length > 0)
             console.debug(messages.pop())
@@ -149,8 +149,8 @@ export const Symfoni: React.FC<SymfoniProps> = ({
                 setMessages(old => [...old, text])
             }
             const finishWithContracts = (text: string) => {
-                setEDeliveryFactory(getEDeliveryFactory(_provider, _signer))
                 setEDelivery(getEDelivery(_provider, _signer))
+                setEDeliveryFactory(getEDeliveryFactory(_provider, _signer))
                 finish(text)
             }
             if (!autoInit && initializeCounter === 0) return finish("Auto init turned off.")
@@ -179,22 +179,22 @@ export const Symfoni: React.FC<SymfoniProps> = ({
         return () => { subscribed = false }
     }, [initializeCounter])
 
-    const getEDeliveryFactory = (_provider: providers.Provider, _signer?: Signer) => {
-
-        const contractAddress = "0x458058F93642e281c23B5C468378948cDfda1727"
-        const instance = _signer ? EDeliveryFactory__factory.connect(contractAddress, _signer) : EDeliveryFactory__factory.connect(contractAddress, _provider)
-        const contract: SymfoniEDeliveryFactory = {
-            instance: instance,
-            factory: _signer ? new EDeliveryFactory__factory(_signer) : undefined,
-        }
-        return contract
-    }
-        ;
     const getEDelivery = (_provider: providers.Provider, _signer?: Signer) => {
         let instance = _signer ? EDelivery__factory.connect(ethers.constants.AddressZero, _signer) : EDelivery__factory.connect(ethers.constants.AddressZero, _provider)
         const contract: SymfoniEDelivery = {
             instance: instance,
             factory: _signer ? new EDelivery__factory(_signer) : undefined,
+        }
+        return contract
+    }
+        ;
+    const getEDeliveryFactory = (_provider: providers.Provider, _signer?: Signer) => {
+
+        const contractAddress = "0x337b49b049d8B0518012D888cc0Dc9Fa31543872"
+        const instance = _signer ? EDeliveryFactory__factory.connect(contractAddress, _signer) : EDeliveryFactory__factory.connect(contractAddress, _provider)
+        const contract: SymfoniEDeliveryFactory = {
+            instance: instance,
+            factory: _signer ? new EDeliveryFactory__factory(_signer) : undefined,
         }
         return contract
     }
@@ -213,8 +213,8 @@ export const Symfoni: React.FC<SymfoniProps> = ({
             <ProviderContext.Provider value={[provider, setProvider]}>
                 <SignerContext.Provider value={[signer, setSigner]}>
                     <CurrentAddressContext.Provider value={[currentAddress, setCurrentAddress]}>
-                        <EDeliveryFactoryContext.Provider value={EDeliveryFactory}>
-                            <EDeliveryContext.Provider value={EDelivery}>
+                        <EDeliveryContext.Provider value={EDelivery}>
+                            <EDeliveryFactoryContext.Provider value={EDeliveryFactory}>
                                 {showLoading && loading ?
                                     props.loadingComponent
                                         ? props.loadingComponent
@@ -225,8 +225,8 @@ export const Symfoni: React.FC<SymfoniProps> = ({
                                         </div>
                                     : props.children
                                 }
-                            </EDeliveryContext.Provider >
-                        </EDeliveryFactoryContext.Provider >
+                            </EDeliveryFactoryContext.Provider >
+                        </EDeliveryContext.Provider >
                     </CurrentAddressContext.Provider>
                 </SignerContext.Provider>
             </ProviderContext.Provider>
