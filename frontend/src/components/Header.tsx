@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,7 +6,6 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
-import { inherits } from 'node:util';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,8 +42,6 @@ const Header = () => {
       </AppBar>
     </div>
   )
-  //  as={Link} to='/'
-  //  as={Link} to='/edit'
 }
 
 export default Header;
