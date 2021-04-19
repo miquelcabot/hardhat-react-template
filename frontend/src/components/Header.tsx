@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
+import { inherits } from 'node:util';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+  },
+  link: {
+    color: 'inherit',
+    textDecoration: 'none',
   },
 }))
 
@@ -33,8 +38,8 @@ const Header = () => {
           <Typography variant="h6" className={classes.title}>
             Greeter
           </Typography>
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">Edit</Button>
+          <Link to='/' className={classes.link}><Button color="inherit">Home</Button></Link>
+          <Link to='/edit' className={classes.link}><Button color="inherit">Edit</Button></Link>
         </Toolbar>
       </AppBar>
     </div>
