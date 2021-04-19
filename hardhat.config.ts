@@ -9,7 +9,6 @@ import "@nomiclabs/hardhat-waffle";
 import "@nomiclabs/hardhat-solhint";
 import "hardhat-deploy-ethers";
 import "hardhat-deploy";
-import "@symfoni/hardhat-react";
 import "hardhat-typechain";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
