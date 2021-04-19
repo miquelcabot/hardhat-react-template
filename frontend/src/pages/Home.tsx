@@ -1,7 +1,7 @@
-import React, { Component, useContext, useEffect } from 'react';
+import React, { Component, useContext, useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core'
 import { InjectedConnector } from '@web3-react/injected-connector'
-import { Symfoni, EDeliveryFactoryContext } from "../hardhat/SymfoniContext";
+import { Symfoni, GreeterContext } from "../hardhat/SymfoniContext";
 
 export const injectedConnector = new InjectedConnector({
   supportedChainIds: [
@@ -22,6 +22,7 @@ export const Wallet = () => {
 
   return (
     <div>
+      <h1>Using @web3-react/core</h1>
       <div>ChainId: {chainId}</div>
       <div>Account: {account}</div>
       {active ? (
@@ -37,33 +38,24 @@ export const Wallet = () => {
 
 interface Props { }
 
-const EDeliveryFactory: React.FC<Props> = () => {
-  const eDeliveryFactory = useContext(EDeliveryFactoryContext);
+const Greeter: React.FC<Props> = () => {
+  const greeter = useContext(GreeterContext);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     const doAsync = async () => {
-        if (!eDeliveryFactory.instance) return
-        console.log("EDeliveryFactory is deployed at ", eDeliveryFactory.instance.address)
-        //console.log(await eDeliveryFactory.instance.greet())
+      if (greeter.instance) {
+        console.log("Greeter is deployed at ", greeter.instance.address)
+        setMessage(await greeter.instance.greet())
+      }
     };
     doAsync();
-  }, [eDeliveryFactory])
-
-  const onClick = async () => {
-    if (!eDeliveryFactory.instance) throw Error("EDeliveryFactory instance not ready")
-    if (eDeliveryFactory.instance) {
-        const tx = await eDeliveryFactory.instance.createDelivery([eDeliveryFactory.instance.address], "hola")
-        console.log("createDelivery tx", tx)
-        await tx.wait()
-        console.log("New delivery created, result: ", await eDeliveryFactory.instance.deliveries)
-    }
-  }
+  }, [greeter])
 
   return (
     <div>
-      <button type="button" onClick={onClick}>
-        Connect to eDeliveryFactory with Sinfony
-      </button>
+      <h1>Using @symfoni/hardhat-react</h1>
+      <p>Greeter message: <strong>{message}</strong></p>
     </div>
   )
 }
@@ -85,7 +77,7 @@ class Home extends Component {
       <div>
         <Wallet />
         <Symfoni autoInit={true} >
-          <EDeliveryFactory />
+          <Greeter />
         </Symfoni>
       </div>
     );

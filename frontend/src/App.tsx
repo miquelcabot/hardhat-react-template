@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Home from './pages/Home';
-import DeliveryNew from './pages/DeliveryNew';
-import DeliveryShow from './pages/DeliveryShow';
+import Edit from './pages/Edit';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -14,8 +13,7 @@ class App extends Component {
           <Header />
           <Switch>
               <Route exact path='/' component={Home}/>
-              <Route exact path='/deliveries/new' component={DeliveryNew}/>
-              <Route exact path='/deliveries/:address' component={DeliveryShow}/>
+              <Route exact path='/edit' component={Edit}/>
           </Switch>
         </Container>
     );

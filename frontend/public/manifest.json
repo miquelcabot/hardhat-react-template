@@ -1,6 +1,6 @@
 {
-  "short_name": "EDelivery",
-  "name": "eDelivery",
+  "short_name": "Greeter",
+  "name": "greeter",
   "icons": [
     {
       "src": "favicon.ico",

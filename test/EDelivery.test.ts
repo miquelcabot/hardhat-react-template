@@ -1,41 +1,32 @@
 import { ethers, waffle } from 'hardhat'
 import chai from 'chai'
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
-import { EDeliveryFactory } from '../frontend/src/typechain/EDeliveryFactory'
-import { EDelivery } from '../frontend/src/typechain/EDelivery'
+import { Greeter } from '../frontend/src/typechain/Greeter'
 
 chai.use(waffle.solidity)
 const { expect } = chai
 
-describe('EDelivery contract', () => {
-  let eDeliveryFactory: EDeliveryFactory
-  let eDelivery: EDelivery
+describe('Greeter contract', () => {
+  let greeter: Greeter
   let owner: SignerWithAddress
   let addr1: SignerWithAddress
   let addr2: SignerWithAddress
 
-  const MESSAGE: string = 'Hola, com va tot?'
+  const MESSAGE: string = 'Hello world'
 
   beforeEach('deploy', async () => {
     [owner, addr1, addr2] = await ethers.getSigners()
 
-    const EDeliveryFactory = await ethers.getContractFactory('EDeliveryFactory')
-    eDeliveryFactory = (await EDeliveryFactory.deploy()) as EDeliveryFactory
-
-    await eDeliveryFactory.createDelivery([addr1.address, addr2.address], MESSAGE)
-    const [eDeliveryAddress] = await eDeliveryFactory.getDeliveries()
-
-    const EDelivery = await ethers.getContractFactory('EDelivery')
-    eDelivery = (await EDelivery.attach(eDeliveryAddress)) as EDelivery
+    const Greeter = await ethers.getContractFactory('Greeter')
+    greeter = (await Greeter.deploy(MESSAGE)) as Greeter
   })
 
-  it('deploys a factory and a delivery', async () => {
-    expect(eDeliveryFactory.address).to.not.be.undefined
-    expect(eDelivery.address).to.not.be.undefined
+  it('deploys the smart contract', async () => {
+    expect(greeter.address).to.not.be.undefined
   })
 
   it('message is correct', async () => {
-    let message = await eDelivery.message()
+    let message = await greeter.greet()
     expect(message).to.be.equal(MESSAGE)
   })
 

@@ -11,10 +11,10 @@ async function main() {
   
   console.log('Account balance:', (await deployer.getBalance()).toString());
 
-  const EDeliveryFactory = await ethers.getContractFactory('EDeliveryFactory');
-  const eDeliveryFactory = await EDeliveryFactory.deploy();
+  const Greeter = await ethers.getContractFactory('Greeter');
+  const greeter = await Greeter.deploy();
 
-  console.log('EDeliveryFactory address:', eDeliveryFactory.address);
+  console.log('Greeter address:', greeter.address);
 }
 
 main()

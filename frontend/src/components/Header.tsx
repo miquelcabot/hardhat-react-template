@@ -7,10 +7,10 @@ class Header extends Component {
   render() {
     return (
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand as={Link} to='/'>eDelivery</Navbar.Brand>
+        <Navbar.Brand as={Link} to='/'>Greeter</Navbar.Brand>
         <Nav className="mr-auto">
-          <Nav.Link as={Link} to='/'>Deliveries</Nav.Link>
-          <Nav.Link as={Link} to='/deliveries/new'>+</Nav.Link>
+          <Nav.Link as={Link} to='/'>Home</Nav.Link>
+          <Nav.Link as={Link} to='/edit'>Edit</Nav.Link>
         </Nav>
       </Navbar>
     );
