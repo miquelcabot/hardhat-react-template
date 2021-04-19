@@ -123,7 +123,7 @@ build/
 # Waffle and typechain temp folders
 artifacts/
 cache/
-typechain/
+# typechain/
 
 # We need to avoid the error:
 # "The react-scripts package provided by Create React App requires a dependency: "eslint": "^7.11.0". "
