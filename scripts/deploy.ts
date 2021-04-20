@@ -12,7 +12,7 @@ async function main() {
   console.log('Account balance:', (await deployer.getBalance()).toString());
 
   const Greeter = await ethers.getContractFactory('Greeter');
-  const greeter = await Greeter.deploy();
+  const greeter = await Greeter.deploy('Hello world');
 
   console.log('Greeter address:', greeter.address);
 }

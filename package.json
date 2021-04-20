@@ -12,6 +12,7 @@
     "test:gas": "GAS_REPORT=TRUE hardhat test",
     "deploy": "hardhat deploy",
     "deploy:rinkeby": "hardhat deploy --network rinkeby",
+    "deploy:bsctest": "npx hardhat run --network bsctest scripts/deploy.ts",
     "prettier": "prettier --write 'contracts/**/*.sol' --tab-width 2",
     "start": "cd frontend && yarn start",
     "build": "cd frontend && yarn build",
