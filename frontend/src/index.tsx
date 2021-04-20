@@ -9,9 +9,19 @@ import { Web3Provider } from '@ethersproject/providers'
 const Web3ProviderNetwork = createWeb3ReactRoot('NETWORK')
 
 function getLibrary(provider: any): Web3Provider {
-  const library = new Web3Provider(provider, 'any')
+  // before: 
+  // const library = new Web3Provider(provider, 'any')
+  // now, to solve the error:
+  // TypeError: Cannot read property 'detectNetwork' of undefined
+  // Web3Provider.detectNetwork
+  // hardhat-waffle-ethers-ts-template-1/src.ts/json-rpc-provider.ts:331
+  const library = new Web3Provider(provider) 
   library.pollingInterval = 15000
   return library
+}
+
+if (!!(window as any).ethereum) {
+  (window as any).ethereum.autoRefreshOnNetworkChange = false
 }
 
 ReactDOM.render(
