@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import App from './App';
@@ -15,13 +15,15 @@ function getLibrary(provider: any): Web3Provider {
 }
 
 ReactDOM.render(
-  <Web3ReactProvider getLibrary={getLibrary}>
-      <Web3ProviderNetwork getLibrary={getLibrary}>
-        <HashRouter>
-          <App />
-        </HashRouter>
-      </Web3ProviderNetwork>
-  </Web3ReactProvider>,
+  <StrictMode>
+    <Web3ReactProvider getLibrary={getLibrary}>
+        <Web3ProviderNetwork getLibrary={getLibrary}>
+          <HashRouter>
+            <App />
+          </HashRouter>
+        </Web3ProviderNetwork>
+    </Web3ReactProvider>
+  </StrictMode>,
   document.getElementById('root')
 );
 
