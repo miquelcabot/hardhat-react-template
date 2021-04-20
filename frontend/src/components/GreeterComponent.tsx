@@ -11,6 +11,8 @@ export const injectedConnector = new InjectedConnector({
     4, // Rinkeby
     5, // Goerli
     42, // Kovan
+    56, // Binance Smart Chain (BNB)
+    97, // Binance Smart Chain (BNB) - Testnet
   ],
 })
 
