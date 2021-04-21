@@ -4,7 +4,7 @@ import { Greeter as TcGreeter } from './../typechain/Greeter';
 import { Greeter__factory as TcGreeterFactory } from './../typechain/factories/Greeter__factory';
 
 export const Greeter = () => {
-  const { chainId, account, active, library } = useWeb3React();
+  const { chainId, active, library } = useWeb3React();
 
   const [message, setMessage] = useState('');
 
@@ -29,12 +29,6 @@ export const Greeter = () => {
   return (
     <div>
       <div>ChainId: {chainId}</div>
-      <div>Account: {account}</div>
-      {active ? (
-        <div>✅ Active connection</div>
-      ) : (
-        <div>Not connected</div>
-      )}
       <div>
         Message in the Greeter smart contract: <strong>{message}</strong>
       </div>
