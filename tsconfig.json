@@ -5,22 +5,10 @@
     "strict": true,
     "esModuleInterop": true,
     "outDir": "dist",
-    "typeRoots": [
-      "./frontend/src/typechain",
-      "./node_modules/@types"
-    ],
-    "types": [
-      "@nomiclabs/hardhat-ethers",
-      "@nomiclabs/hardhat-waffle"
-    ],
-    "resolveJsonModule": true,
+    "typeRoots": ["./frontend/src/typechain", "./node_modules/@types"],
+    "types": ["@nomiclabs/hardhat-ethers", "@nomiclabs/hardhat-waffle"],
+    "resolveJsonModule": true
   },
-  "include": [
-    "./scripts",
-    "./test",
-    "./deploy"
-  ],
-  "files": [
-    "./hardhat.config.ts"
-  ]
+  "include": ["./scripts", "./test", "./deploy"],
+  "files": ["./hardhat.config.ts"]
 }

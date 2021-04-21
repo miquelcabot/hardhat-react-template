@@ -39,7 +39,7 @@ const Footer = () => {
         <Copyright />
       </Box>
     </Container>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

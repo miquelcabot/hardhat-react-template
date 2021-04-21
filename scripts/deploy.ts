@@ -1,14 +1,10 @@
-import { ethers } from 'hardhat'
+import { ethers } from 'hardhat';
 
 async function main() {
-
   const [deployer] = await ethers.getSigners();
 
-  console.log(
-    'Deploying contracts with the account:',
-    deployer.address
-  );
-  
+  console.log('Deploying contracts with the account:', deployer.address);
+
   console.log('Account balance:', (await deployer.getBalance()).toString());
 
   const Greeter = await ethers.getContractFactory('Greeter');
@@ -19,7 +15,7 @@ async function main() {
 
 main()
   .then(() => process.exit(0))
-  .catch(error => {
+  .catch((error) => {
     console.error(error);
     process.exit(1);
   });

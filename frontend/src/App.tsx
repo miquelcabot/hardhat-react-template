@@ -25,15 +25,15 @@ const App = () => {
         <Box>
           <Typography variant="body1">
             <Switch>
-              <Route exact path='/' component={Home}/>
-              <Route exact path='/edit' component={Edit}/>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/edit" component={Edit} />
             </Switch>
           </Typography>
         </Box>
       </Container>
       <Footer />
     </>
-  )
-}
+  );
+};
 
 export default App;
