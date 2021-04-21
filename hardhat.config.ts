@@ -22,6 +22,8 @@ const chainIds = {
     mainnet: 1,
     rinkeby: 4,
     ropsten: 3,
+    bsctest: 97,
+    bscmain: 56,
 };
 
 const MNEMONIC: string = process.env.MNEMONIC || '';
