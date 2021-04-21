@@ -3,6 +3,7 @@ import { Button } from '@material-ui/core';
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core';
 import { shortenAddress } from '../utils'
 import { makeStyles } from '@material-ui/core/styles';
+import { useWalletModalToggle } from '../state/application/hooks'
 
 const useStyles = makeStyles((theme) => ({
   connected: {
@@ -15,21 +16,23 @@ function Web3StatusInner() {
 
   const { account, error } = useWeb3React()
 
+  const toggleWalletModal = useWalletModalToggle()
+
   if (account) {
     return (
-      <Button href="#" color="default" variant="outlined" className={classes.connected}>
+      <Button href="#" color="default" variant="outlined" onClick={toggleWalletModal} className={classes.connected}>
         {shortenAddress(account)}
       </Button>
     )
   } else if (error) {
     return (
-      <Button href="#" color="secondary" variant="outlined">
+      <Button href="#" color="secondary" variant="outlined" onClick={toggleWalletModal}>
         {error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error'}
       </Button>
     )
   } else {
     return (
-      <Button href="#" color="inherit" variant="outlined">
+      <Button href="#" color="inherit" variant="outlined" onClick={toggleWalletModal}>
         Connect to a wallet
       </Button>
     )
