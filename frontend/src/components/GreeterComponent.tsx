@@ -10,12 +10,16 @@ export const GreeterComponent = () => {
 
   useEffect(() => {
     const showGreeter = async () => {
-      let greeter: Greeter = Greeter__factory.connect(
-        '0x18AfA7D71a3af8c791F65cAeE7E513092C0628b6',
-        library
-      );
+      try {
+        let greeter: Greeter = Greeter__factory.connect(
+          '0x18AfA7D71a3af8c791F65cAeE7E513092C0628b6',
+          library
+        );
 
-      setMessage(await greeter.greet());
+        setMessage(await greeter.greet());
+      } catch (err) {
+        setMessage(`ERROR: ${err}`)
+      }
     };
     if (active) {
       showGreeter();
