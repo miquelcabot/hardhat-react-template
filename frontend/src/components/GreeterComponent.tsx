@@ -39,7 +39,7 @@ export const GreeterComponent = () => {
       setMessage(await greeter.greet());
     };
     if (!active) {
-      connect();
+      // connect();
     } else {
       showGreeter();
     }

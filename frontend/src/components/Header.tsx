@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
+import Web3Status from './Web3Status';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,6 +48,7 @@ const Header = () => {
           <Link to="/edit" className={classes.link}>
             <Button color="inherit">Edit</Button>
           </Link>
+          <Web3Status />
         </Toolbar>
       </AppBar>
     </div>
