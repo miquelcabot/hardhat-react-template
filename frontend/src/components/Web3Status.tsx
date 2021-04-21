@@ -3,7 +3,25 @@ import { Button } from '@material-ui/core';
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core';
 import { shortenAddress } from '../utils'
 import { makeStyles } from '@material-ui/core/styles';
-import { useWalletModalToggle } from '../state/application/hooks'
+import { InjectedConnector } from '@web3-react/injected-connector';
+
+export const injectedConnector = new InjectedConnector({
+  supportedChainIds: [
+    1, // Mainet
+    3, // Ropsten
+    4, // Rinkeby
+    5, // Goerli
+    42, // Kovan
+    56, // Binance Smart Chain (BNB)
+    97, // Binance Smart Chain (BNB) - Testnet
+  ],
+});
+
+function useWalletModalToggle(): () => void {
+  const { activate } = useWeb3React();
+
+  return async () => { await activate(injectedConnector) }
+}
 
 const useStyles = makeStyles((theme) => ({
   connected: {
@@ -40,14 +58,6 @@ function Web3StatusInner() {
 }
 
 export default function Web3Status() {
-  /*const { active } = useWeb3React()
-
-  const contextNetwork = useWeb3React(NetworkContextName)
-
-  if (!contextNetwork.active && !active) {
-    return null
-  }*/
-
   return (
     <>
       <Web3StatusInner />
