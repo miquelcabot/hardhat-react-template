@@ -1,9 +1,9 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import { UnsupportedChainIdError, useWeb3React } from '@web3-react/core';
 import { shortenAddress } from '../utils'
-import { makeStyles } from '@material-ui/core/styles';
 import { InjectedConnector } from '@web3-react/injected-connector';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 export const injectedConnector = new InjectedConnector({
   supportedChainIds: [
@@ -23,34 +23,26 @@ function useWalletModalToggle(): () => void {
   return async () => { await activate(injectedConnector) }
 }
 
-const useStyles = makeStyles((theme) => ({
-  connected: {
-    color: 'aqua',
-  },
-}));
-
 function Web3StatusInner() {
-  const classes = useStyles();
-
   const { account, error } = useWeb3React()
 
   const toggleWalletModal = useWalletModalToggle()
 
   if (account) {
     return (
-      <Button href="#" color="default" variant="outlined" onClick={toggleWalletModal} className={classes.connected}>
+      <Button color="default" variant="success" onClick={toggleWalletModal}>
         {shortenAddress(account)}
       </Button>
     )
   } else if (error) {
     return (
-      <Button href="#" color="secondary" variant="outlined" onClick={toggleWalletModal}>
+      <Button color="secondary" variant="danger" onClick={toggleWalletModal}>
         {error instanceof UnsupportedChainIdError ? 'Wrong Network' : 'Error'}
       </Button>
     )
   } else {
     return (
-      <Button href="#" color="inherit" variant="outlined" onClick={toggleWalletModal}>
+      <Button color="inherit" variant="primary" onClick={toggleWalletModal}>
         Connect to a wallet
       </Button>
     )
@@ -59,8 +51,8 @@ function Web3StatusInner() {
 
 export default function Web3Status() {
   return (
-    <>
+    <Form inline>
       <Web3StatusInner />
-    </>
+    </Form>
   )
 }

@@ -1,57 +1,21 @@
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
 import Web3Status from './Web3Status';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-  link: {
-    color: 'inherit',
-    textDecoration: 'none',
-  },
-}));
-
 const Header = () => {
-  const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Greeter
-          </Typography>
-          <Link to="/" className={classes.link}>
-            <Button color="inherit">Home</Button>
-          </Link>
-          <Link to="/edit" className={classes.link}>
-            <Button color="inherit">Edit</Button>
-          </Link>
-          <Web3Status />
-        </Toolbar>
-      </AppBar>
-    </div>
+    <Navbar bg="dark" variant="dark">
+      <Navbar.Brand as={Link} to='/'>Greeter</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link as={Link} to='/'>Home</Nav.Link>
+          <Nav.Link as={Link} to='/edit'>Edit</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+      <Web3Status />
+    </Navbar>
   );
 };
 

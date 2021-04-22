@@ -1,10 +1,13 @@
+import Card from 'react-bootstrap/Card'
 import { Greeter } from '../components/Greeter';
 
 const Home = () => {
   return (
-    <div>
-      <Greeter />
-    </div>
+    <Card>
+      <Card.Body>
+        <Greeter />
+      </Card.Body>
+    </Card>
   );
 };
 
