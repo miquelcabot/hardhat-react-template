@@ -1,18 +1,17 @@
 // hardhat.config.ts
-import { config as dotenvConfig } from 'dotenv';
-import { resolve } from 'path';
-dotenvConfig({ path: resolve(__dirname, './.env') });
+const dotenv = require('dotenv');
+const path = require('path');
 
-import { HardhatUserConfig } from 'hardhat/types';
+dotenv.config({ path: path.resolve(__dirname, './.env') });
 
-import '@nomiclabs/hardhat-waffle';
-import '@nomiclabs/hardhat-solhint';
-import 'hardhat-deploy-ethers';
-import 'hardhat-deploy';
-import 'hardhat-typechain';
-import 'hardhat-gas-reporter';
-import 'solidity-coverage';
-import '@typechain/ethers-v5';
+require('@nomiclabs/hardhat-waffle');
+require('@nomiclabs/hardhat-solhint');
+require('hardhat-deploy-ethers');
+require('hardhat-deploy');
+require('hardhat-typechain');
+require('hardhat-gas-reporter');
+require('solidity-coverage');
+require('@typechain/ethers-v5');
 
 const chainIds = {
   ganache: 1337,
@@ -33,7 +32,10 @@ const getInfuraURL = (network: keyof typeof chainIds) => {
   return `https://${network}.infura.io/v3/${INFURA_KEY}`;
 };
 
-const config: HardhatUserConfig = {
+/**
+ * @type import('hardhat/config').HardhatUserConfig
+ */
+module.exports = {
   defaultNetwork: 'hardhat',
   networks: {
     hardhat: {
@@ -93,4 +95,3 @@ const config: HardhatUserConfig = {
     deployments: 'frontend/src/deployments',
   }
 };
-export default config;

@@ -1,16 +1,22 @@
-import { ethers, waffle } from 'hardhat';
-import chai from 'chai';
-import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
-import { Greeter } from '../frontend/src/typechain/Greeter';
+const hardhat = require('hardhat');
+const ethers = hardhat.ethers;
+const waffle = hardhat.waffle;
 
-chai.use(waffle.solidity);
-const { expect } = chai;
+//const Greeter = require('./frontend/src/typechain/Greeter.d');
+//import { Greeter } from '../frontend/src/typechain/Greeter';
 
 describe('Greeter contract', () => {
+  // Load chai library
+  const chai = require('chai');
+  chai.use(waffle.solidity);
+  let expect = chai.expect;
+
   let greeter: Greeter;
-  let owner: SignerWithAddress;
-  let addr1: SignerWithAddress;
-  let addr2: SignerWithAddress;
+
+  const accounts = await ethers.getSigners();
+  let owner = accounts[0];
+  let addr1 = accounts[1];
+  let addr2 = accounts[2];
 
   const MESSAGE = 'Hello world';
 
