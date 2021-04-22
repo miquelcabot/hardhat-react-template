@@ -84,5 +84,13 @@ const config: HardhatUserConfig = {
   typechain: {
     outDir: 'frontend/src/typechain',
   },
+  namedAccounts: {
+    deployer: {
+      default: 0, // here this will by default take the first account as deployer
+    },
+  },
+  paths: {
+    deployments: 'frontend/src/deployments',
+  }
 };
 export default config;

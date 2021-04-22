@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { Greeter as TcGreeter } from './../typechain/Greeter';
 import { Greeter__factory as TcGreeterFactory } from './../typechain/factories/Greeter__factory';
+import * as GreeterDeployment from '../deployments/rinkeby/Greeter.json';
 
 export const Greeter = () => {
   const { chainId, active, library } = useWeb3React();
@@ -12,7 +13,7 @@ export const Greeter = () => {
     const showGreeter = async () => {
       try {
         let greeter: TcGreeter = TcGreeterFactory.connect(
-          '0x18AfA7D71a3af8c791F65cAeE7E513092C0628b6',
+          GreeterDeployment.address,
           library
         );
 
