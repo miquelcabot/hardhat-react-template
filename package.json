@@ -1,8 +1,7 @@
 {
-  "name": "hardhat-waffle-ethers-ts-react-template",
+  "name": "hardhat-react-template",
   "version": "1.0.0",
-  "description": "Hardhat+Waffle+Ethers+Typescript+ReactJS template to compile and test a Solidity Smart Contract",
-  "main": "index.js",
+  "description": "Template for using Hardhat+Waffle+Ethers template to compile and test a Solidity Smart Contracts. UI with ReactJS",
   "scripts": {
     "compile": "hardhat compile",
     "format": "prettier --write .",
@@ -24,7 +23,7 @@
     "hardhat",
     "waffle",
     "ethers",
-    "typescript",
+    "ethereum",
     "react",
     "solidity"
   ],
