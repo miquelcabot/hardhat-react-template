@@ -1,10 +1,8 @@
 const { expect } = require("chai");
 
-describe('Greeter contract', async () => {
+describe('Greeter contract', () => {
 
   let greeter;
-
-  [owner, addr1, addr2] = await ethers.getSigners();
 
   const MESSAGE = 'Hello world';
 

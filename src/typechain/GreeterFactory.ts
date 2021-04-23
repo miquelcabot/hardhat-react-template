@@ -2,33 +2,31 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import { Signer, Contract, ContractFactory, Overrides } from "ethers";
+import { Signer } from "ethers";
 import { Provider, TransactionRequest } from "@ethersproject/providers";
+import { Contract, ContractFactory, Overrides } from "@ethersproject/contracts";
 
-import type { Greeter } from "../Greeter";
+import type { Greeter } from "./Greeter";
 
-export class Greeter__factory extends ContractFactory {
+export class GreeterFactory extends ContractFactory {
   constructor(signer?: Signer) {
     super(_abi, _bytecode, signer);
   }
 
-  deploy(
-    _greeting: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
-  ): Promise<Greeter> {
+  deploy(_greeting: string, overrides?: Overrides): Promise<Greeter> {
     return super.deploy(_greeting, overrides || {}) as Promise<Greeter>;
   }
   getDeployTransaction(
     _greeting: string,
-    overrides?: Overrides & { from?: string | Promise<string> }
+    overrides?: Overrides
   ): TransactionRequest {
     return super.getDeployTransaction(_greeting, overrides || {});
   }
   attach(address: string): Greeter {
     return super.attach(address) as Greeter;
   }
-  connect(signer: Signer): Greeter__factory {
-    return super.connect(signer) as Greeter__factory;
+  connect(signer: Signer): GreeterFactory {
+    return super.connect(signer) as GreeterFactory;
   }
   static connect(
     address: string,

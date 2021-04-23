@@ -21,8 +21,6 @@ const chainIds = {
   mainnet: 1,
   rinkeby: 4,
   ropsten: 3,
-  bsctest: 97,
-  bscmain: 56,
 };
 
 const MNEMONIC = process.env.MNEMONIC || '';
@@ -84,7 +82,7 @@ module.exports = {
     enabled: process.env.GAS_REPORT ? true : false,
   },
   typechain: {
-    outDir: 'frontend/src/typechain',
+    outDir: 'src/typechain',
   },
   namedAccounts: {
     deployer: {
@@ -92,6 +90,6 @@ module.exports = {
     },
   },
   paths: {
-    deployments: 'frontend/src/deployments',
+    deployments: 'src/deployments',
   }
 };
