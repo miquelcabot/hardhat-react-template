@@ -18,21 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "typeRoots": [
-      "./src/typechain",
-      "./node_modules/@types"
-    ],
-    "types": [
-      "@nomiclabs/hardhat-ethers",
-      "@nomiclabs/hardhat-waffle"
-    ]
+    "jsx": "react-jsx"
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
+    "src"
   ]
 }

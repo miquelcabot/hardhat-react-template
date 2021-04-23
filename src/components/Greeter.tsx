@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { Greeter as TcGreeter } from './../typechain/Greeter';
-import { GreeterFactory as TcGreeterFactory } from './../typechain/GreeterFactory';
+import { Greeter__factory as TcGreeterFactory } from './../typechain/factories/Greeter__factory';
 import { chainIdNames } from '../constants';
 
 export const Greeter = () => {
