@@ -1,5 +1,13 @@
+import Card from 'react-bootstrap/Card'
+
 const Edit = () => {
-  return <p>Edit Greeter</p>;
+  return (
+    <Card>
+      <Card.Body>
+        Edit Greeter
+      </Card.Body>
+    </Card>
+  );
 };
 
 export default Edit;
