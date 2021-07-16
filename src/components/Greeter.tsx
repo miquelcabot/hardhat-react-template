@@ -5,7 +5,7 @@ import { Greeter__factory as TcGreeterFactory } from './../typechain/factories/G
 import { chainIdNames } from '../constants';
 
 export const Greeter = () => {
-  const { chainId, active, library } = useWeb3React();
+  const { chainId, active, library, account } = useWeb3React();
 
   const [message, setMessage] = useState('');
 
@@ -15,14 +15,16 @@ export const Greeter = () => {
         const chainIdName = chainIdNames[chainId as number];
         let deployedConfig = await import(`../deployments/${chainIdName}/Greeter.json`);
 
+        const signer = library.getSigner(account);
+
         let greeter: TcGreeter = TcGreeterFactory.connect(
           deployedConfig.address,
-          library
+          signer
         );
-
+        
         setMessage(await greeter.greet());
       } catch (err) {
-        setMessage(`ERROR: ${err}`)
+        setMessage(`ERROR: ${err.message}`)
       }
     };
     if (active) {
