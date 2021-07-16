@@ -4,7 +4,7 @@
   "description": "Template for using Hardhat+Waffle+Ethers template to compile and test a Solidity Smart Contracts. UI with ReactJS",
   "scripts": {
     "compile": "hardhat compile",
-    "node": "hardhat node",
+    "hnode": "hardhat node",
     "console": "hardhat console",
     "test": "hardhat test",
     "test:rinkeby": "hardhat test --network rinkeby",
