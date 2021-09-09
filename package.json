@@ -10,6 +10,7 @@
     "test:rinkeby": "hardhat test --network rinkeby",
     "test:gas": "GAS_REPORT=TRUE hardhat test",
     "deploy": "hardhat deploy",
+    "coverage": "hardhat coverage",
     "deploy:rinkeby": "hardhat deploy --network rinkeby",
     "start": "react-scripts start",
     "build": "react-scripts build",
